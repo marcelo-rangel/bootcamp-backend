@@ -3,3 +3,4 @@ build/
 debug.log
 *.log
 config.ts
+.enV

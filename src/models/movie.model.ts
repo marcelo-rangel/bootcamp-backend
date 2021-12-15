@@ -1,36 +1,39 @@
-import { truncate } from 'fs';
-import {Document, Schema, model} from 'mongoose';
+import { Document, Schema, model } from 'mongoose';
 
-interface MovieDocument{
+interface MovieDocument {
     name: string;
     category: string;
     description: string;
+    media_type: string;
     poster: string;
     backdrop?: string;
 }
 
 const MovieSchema = new Schema(
     {
-        name:{
-            type:String,
+        name: {
+            type: String,
             required: true
         },
-        category:{
-            type:String,
+        category: {
+            type: String,
             required: true
         },
-        description:{
-            type:String,
+        description: {
+            type: String,
             required: true
         },
-        poster:{
-            type:String,
+        media_type: {
+            type: String,
             required: true
         },
-        backdrop:{
-            type:String,
+        poster: {
+            type: String,
+            required: true
         },
-     
+        backdrop: {
+            type: String
+        },
     },
     {
         timestamps: true
@@ -38,8 +41,9 @@ const MovieSchema = new Schema(
         createdAt: Date
         updatedAt: Date
         */
-    }   
-
+    }
 );
-const Movie = model<MovieDocument>("Movie",MovieSchema);
-export{Movie};//torna visivel para import em outros arquivos
+
+const Movie = model<MovieDocument>("Movie", MovieSchema);
+
+export { Movie };
