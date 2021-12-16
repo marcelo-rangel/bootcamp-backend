@@ -1,25 +1,28 @@
-import {Document, Schema, model, Mongoose, SchemaTypes} from 'mongoose';
+import { Document, Schema, model, SchemaTypes } from 'mongoose';
 
-interface ListDocument{
+interface ListDocument {
     user_id: string;
     movie_id: string;
 }
 
 const ListSchema = new Schema(
     {
-        user_id:{
+        user_id: {
             type: SchemaTypes.ObjectId,
             required: true,
+            ref: 'User'
         },
-        
-        movie_id:{
-            type:  SchemaTypes.ObjectId,
+        movie_id: {
+            type: SchemaTypes.ObjectId,
             required: true,
+            ref: 'Movie'
         }
     },
     {
         timestamps: true
     }
 );
-const List = model<ListDocument>("List",ListSchema);
-export {List};
+
+const List = model<ListDocument>("List", ListSchema);
+
+export { List };
